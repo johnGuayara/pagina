@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Register Success</title>
+    <link rel="stylesheet" href="../static/index.css" th:href="@{/index.css}" />
+</head>
+<body>
+    <!--Seccion donde contndar la informacion-->
+    <section class="section-success">
+        <!--Este div contendra la informacion proporcionada del formulario-->
+        <div class="info-post">
+            <!--Hay dos span un solo contendra que es que se va a visualizar y el segundo nos mostrara la informacion que se brindo en el formulario que en este caso se llama con un th:text con el atributo y su propiedad-->
+            <p><span>Nombres: </span><span th:text="${user.name}"></span></p>
+            <p><span>Apellidos: </span><span th:text="${user.surname}"></span></p>
+        </div>
+    </section>
+</body>
+</html>

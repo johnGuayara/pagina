@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!--Se inmporta los estilos y la lebreria de angularJS-->
+
+    <link rel="stylesheet" href="../static/index.css"th:href="@{/index.css}" />
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+</head>
+
+<!--Se inicia donde comienza myaplicacion y el controlador del angularJS-->
+
+<body ng-app="myApp" ng-controller="myCtrl">
+
+    <!--Se agrego un titulo-->
+
+    <h1 class="h1-title">Formulario</h1>
+
+    <!--En esta seccion es donde va ir su contenido-->
+
+    <section class="section-form">
+
+        <!--un div donde contendra el formalario-->
+
+        <div class="form-container" >
+
+            <!--El formulario donde unos atributos de thymeleaf como el th:action-> es el que dice donde hara la accion con el metdo post donde lo enviara y un th:object donde nos indicara con que atributo estara enlazado el formulario-->
+
+            <form th:action="@{/register}" method="post" th:object="${user}">
+                <label>Nombres
+
+                <!--th:field nos permite enlazar una propiedad del objeto-->
+                <!--se toma un atributo de angularjs en esta caso el ng-model y le damos una variable-->
+
+                <input type="text" th:field="*{name}" ng-model="name">
+
+                </label>
+                <br>
+                <label>Apellidos
+                <input type="text" th:field="*{surname}" ng-model="surname">
+                </label>
+
+                <input type="submit" value="Confirmar">
+                
+            </form>
+        </div>
+
+        <!--una divicion donde se mostrara la informacion que se digito-->
+
+         <div class="ng-informacion">
+                    <p>Nombres: {{name}}</p>
+                    <p>Apellidos: {{surname}}</p>
+            </div>
+    </section>
+    
+    <!--se inicia el script para que entrege un resultado-->
+
+    <script>
+
+        /*aqui definimos el modulo de angularjs donde le indicaremos donde queremos que se vaya toda la configuracion*/
+
+        let app = angular.module("myApp",[]);
+
+        /*en el controlador indicamos desde donde queremos controlar cierta funcion*/
+
+        app.controller("myCtrl",function($scope){
+
+            /*con el parametro scope le damos unos argumentos donde retornara un valor para dijurlo en la vista*/
+
+            $scope.name = ' ';
+            $scope.surname = ' '; 
+        });
+    </script>
+</body>
+</html>
